@@ -8,6 +8,6 @@ package leetcode.Array;
  */
 public class _0041 {
     public int firstMissingPositive(int[] nums) {
-
+        return 0;
     }
 }
