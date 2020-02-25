@@ -1,14 +1,8 @@
-package leetcode.Array;
+package leetcode.Array.medium;
 
-import java.util.*;
+import java.util.Arrays;
 
-/**
- * @Classname _0031
- * @Description TODO
- * @Date 2020/2/11 18:23
- * @Created by JB
- */
-public class _0031 {
+public class NextPermutation {
     public void nextPermutation(int[] nums) {
         int[] index = new int[2];  //index[0]存值，index[1]存该值对应的坐标，默认值
         for (int i = nums.length - 1; i > 0; i--) {
