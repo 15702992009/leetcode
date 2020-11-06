@@ -1,6 +1,5 @@
 package leetcode.Stack;
 
-import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +41,7 @@ public class _0155 {
             return min;
         }
 
-        @Test
+
         public void test() {
             MinStack minstack = new MinStack();
             minstack.push(2);
