@@ -4,14 +4,7 @@ package leetcode.Offer;
 import java.util.ArrayList;
 import java.util.Stack;
 
-class ListNode {
-    int val;
-    ListNode next;
 
-    ListNode(int x) {
-        val = x;
-    }
-}
 
 public class _06 {
     public int[] reversePrint(ListNode head) {
