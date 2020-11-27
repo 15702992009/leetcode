@@ -2,16 +2,17 @@ package leetcode.Tree;
 
 import java.util.LinkedList;
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(int x) {
-        val = x;
-    }
-}
+
 
 public class _0226 {
+    private class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) {
+            val = x;
+        }
+    }
     public TreeNode invertTree(TreeNode root) {
         if (root == null) {
             return null;
