@@ -1,9 +1,7 @@
 package leetcode.swordToOffer;
 
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 剑指 Offer 55 - I. 二叉树的深度
@@ -11,10 +9,10 @@ import java.util.List;
 public class _0055 {
 
 
-
     class Solution {
         int deepth = 0;
         int ans = 0;
+
         public int maxDepth(TreeNode root) {
             if (root == null) return 0;
             helper(root);
@@ -36,9 +34,9 @@ public class _0055 {
             --deepth;
         }
 
-//========================================================================
+        //========================================================================
         public int maxDepth1(TreeNode root) {
-            if(root == null) return 0;
+            if (root == null) return 0;
 
             return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
         }
@@ -61,48 +59,78 @@ public class _0055 {
          * @param root
          * @return
          */
-    public int maxDepth2(TreeNode root) {
+        public int maxDepth2(TreeNode root) {
 
-        if(root == null) return 0;
-        List<TreeNode> queue = new LinkedList<>() {
-            { add(root); }
+            if (root == null) return 0;
+            List<TreeNode> queue = new LinkedList<>() {
+                {
+                    add(root);
+                }
             }, tmp;
-        int res = 0;
-        while(!queue.isEmpty()) {
-            tmp = new LinkedList<>();
-            for(TreeNode node : queue) {
-                if(node.left != null) tmp.add(node.left);
-                if(node.right != null) tmp.add(node.right);
+            int res = 0;
+            while (!queue.isEmpty()) {
+                tmp = new LinkedList<>();
+                for (TreeNode node : queue) {
+                    if (node.left != null) tmp.add(node.left);
+                    if (node.right != null) tmp.add(node.right);
+                }
+                queue = tmp;
+                res++;
             }
-            queue = tmp;
-            res++;
+            return res;
         }
-        return res;
-    }
 
         public int maxDepth3(TreeNode root) {
-            if(root==null) return 0;
+            if (root == null) return 0;
             //BFS
-            List<TreeNode> queues =new LinkedList<>();
-            int ans=0;
+            List<TreeNode> queues = new LinkedList<>();
+            int ans = 0;
 
             queues.add(root);
-            List<TreeNode> tmp =new LinkedList<>();
+            List<TreeNode> tmp = new LinkedList<>();
 
-            while(!queues.isEmpty()){
-                    //
+            while (!queues.isEmpty()) {
+                //
                 tmp = new LinkedList<>();
 
-                for (TreeNode queue:queues){
-                    if(queue.left!=null) tmp.add(queue.left);
-                    if(queue.right!=null) tmp.add(queue.right);
+                for (TreeNode queue : queues) {
+                    if (queue.left != null) tmp.add(queue.left);
+                    if (queue.right != null) tmp.add(queue.right);
                 }
 
-                queues=tmp;
+                queues = tmp;
                 ++ans;
             }
             return ans;
         }
 
+    }
+
+//    剑指 Offer 55 - II. 平衡二叉树
+
+
+    class SolutionII {
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+
+        public boolean isBalanced(TreeNode root) {
+            countDeepth(root, 0);
+            return max - min <= 1;
+        }
+
+        int countDeepth(TreeNode treeNode, int depth) {
+            if (treeNode == null) return depth;
+
+            depth++;
+            countDeepth(treeNode.left, depth);
+            countDeepth(treeNode.right, depth);
+            if (treeNode.left == null && treeNode.right == null) {
+                //save depth
+                if (depth>max) max=depth;
+                if (depth<min) min=depth;
+            }
+            depth--;
+            return depth;
+        }
     }
 }
