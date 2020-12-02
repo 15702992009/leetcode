@@ -1,6 +1,6 @@
 package leetcode.Tree;
 
-import leetcode.swordToOffer.TreeNode;
+import swordToOffer.TreeNode;
 
 /**
  * 543. 二叉树的直径
