@@ -7,3 +7,9 @@
 *.iml
 out
 gen
+/out/
+src/leetcode/SlidingWindow/
+src/leetcode/String/easy/
+src/leetcode/String/hard/
+src/leetcode/String/medium/
+"src/\345\211\221\346\214\207Offer/medium/"
