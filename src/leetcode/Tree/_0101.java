@@ -1,6 +1,6 @@
 package leetcode.Tree;
 
-import swordToOffer.TreeNode;
+import 剑指Offer.easy.TreeNode;
 
 public class _0101 {
     class Solution {
