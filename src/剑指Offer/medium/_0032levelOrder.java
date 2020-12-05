@@ -12,35 +12,33 @@ public class _0032levelOrder {
      * TreeNode(int x) { val = x; }
      * }
      */
-    /**
-     * Definition for a binary tree node.
-     * public class TreeNode {
-     * int val;
-     * TreeNode left;
-     * TreeNode right;
-     * TreeNode(int x) { val = x; }
-     * }
-     */
     class Solution {
-        public int[] levelOrder(TreeNode root) {
+        public List<List<Integer>> levelOrder(TreeNode root) {
+            List<List<Integer>> res = new ArrayList<>();
             Queue<TreeNode> queue = new LinkedList<>();
-            ArrayList<Integer> list = new ArrayList<>();
-            queue.offer(root);
-            if (root == null) return new int[0];
 
+            if (root == null) return null;
+            queue.add(root);
             while (!queue.isEmpty()) {
-                TreeNode cur = queue.poll();
-                list.add(cur.val);
-                if (cur.left != null) queue.add(cur.left);
-                if (cur.right != null) queue.add(cur.right);
 
-            }
-            int[] vals = new int[list.size()];
-            for (int i = 0; i < list.size(); i++) {
-                vals[i] = list.get(i);
-            }
-            return vals;
+                LinkedList<Integer> tmp = new LinkedList<>();
+                int size = queue.size();
+                for (int i = 0; i < size; i++) {
 
+                    TreeNode node = queue.poll();
+                    if (res.size() % 2 == 0) { //odd tmp
+                        tmp.addLast(node.val);
+                    } else {
+                        tmp.addFirst(node.val);
+                    }
+                    if (node.left != null) queue.add(node.left);
+                    if (node.right != null) queue.add(node.right);
+                }
+
+                res.add(tmp);
+            }
+            return res;
         }
     }
+
 }
